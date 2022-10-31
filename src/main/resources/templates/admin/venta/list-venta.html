@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+<section layout:fragment="header">
+    <h1>
+        Product Type List
+        <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
+</section>
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Venta List</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="box-footer center">
+                        <a th:href="@{/venta/add}">
+                            <button type="button" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add new
+                            </button>
+                        </a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                           <table class="table">
+						    <thead>
+						    <tr>
+						      <td>ID</td>
+						      <td>Fecha</td>
+						      <td>Usuario</td>
+						      <td>SubTotal</td>
+						      <td>Total</td>
+						      <td>ACCIONES</td>
+						    </tr>
+						    </thead>
+						    <tbody>
+						    <tr th:each="venta:${ventas}">
+						      <td th:text="${venta.id}"></td>
+						      <td th:text="${venta.fecha}"></td>
+						      <td th:text="${venta.usuario.email}"></td>
+						      <td th:text="${venta.getSubTotal()}"></td>
+						      <td th:text="${venta.getTotal()}"></td>
+						      <td sec:authorize="hasRole('ROLE_ADMIN')">
+						        <a th:href="@{/venta/editar/}+${venta.id}" class="btn btn-sm btn-info"><i class="fa fa-eye" aria-hidden="true"></i> Ver mas</a>
+						      </td>
+						    </tr>
+						    </tbody>
+						  </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

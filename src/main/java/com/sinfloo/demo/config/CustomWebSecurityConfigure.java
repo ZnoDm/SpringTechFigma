@@ -45,12 +45,12 @@ public class CustomWebSecurityConfigure extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers(
-                "/static/**",
         		"/auth/**",
         		"/register/**",
         		"/login/**",
         		"/registro/**",
                 "/dist/**",
+                
         		"/admin/**"
                 , "/plugins/**"
                 , "/bootstrap/**"

@@ -2,6 +2,7 @@ package com.sinfloo.demo.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name="product")
@@ -83,6 +84,25 @@ public class Producto {
     public void setIsDeleted(boolean isDeleted){
         this.isDeleted=isDeleted;
     }
+    
+    @NotNull(message = "Value required")
+    @Min(value = 0, message = "Stock mín 1")
+    @Column(name = "stock")
+    private int stock;
 
+
+    public int getStock() {
+        return stock;
+    }
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+    
+    public boolean statusStock(){
+        return this.stock <= 0;
+    }
+    public void restarStock(int stock){
+        this.stock -= stock;
+    }
 
 }

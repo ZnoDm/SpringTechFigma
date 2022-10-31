@@ -48,6 +48,7 @@
                                         <th>Brand</th>
                                         <th>Made In</th>
                                         <th>Price</th>
+                                        <th>Stock</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -62,6 +63,7 @@
                                         <td th:text="${product.brand}">Brand</td>
                                         <td th:text="${product.madein}">Made in</td>
                                         <td th:text="${product.price}">Price</td>
+                                        <td th:text="${product.stock}">Price</td>
                                         <td>
                                             <a href="#" class="btn btn-primary btn-xs purple editView" title="Edit" th:href="@{'/product/edit/' + ${product.id}}"><i class="fa fa-edit"></i> Edit</a>
                                             <a href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete" th:href="@{'/product/delete/' + ${product.id}}"><i class="fa fa-trash-o"></i> Delete</a>
